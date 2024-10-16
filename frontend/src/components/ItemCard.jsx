@@ -1,19 +1,13 @@
 //Kanske behöver dubbellkolla
 
-import { ItemName } from "./ItemName"
-import { ItemPrice } from "./ItemPrice"
-import { ItemSupplyCount } from "./ItemSupplyCount"
-import { BuyItem } from "./BuyItem"
-import { ItemImage } from "./ItemImage"
-
-export function ItemCard(){
+export function ItemCard(name, price, stock){
     return(
         <div className="item-card">
-            <ItemImage/>
-            <ItemName/>
-            <ItemPrice/>
-            <ItemSupplyCount/>
-            <BuyItem/>
+            {/*<img src={image}></img>*/}
+            <h3>{name}</h3>
+            <h3>{price}</h3>
+            <p>{stock}</p>
+            <button>KÖP</button>
         </div>
     )
 }

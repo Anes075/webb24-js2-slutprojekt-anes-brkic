@@ -2,28 +2,14 @@
 
 import { ItemCard } from "./ItemCard"
 
-export function ProductPage(){
+export function ProductPage(itemsArray){
 
-    const url = "https://database-22220-default-rtdb.europe-west1.firebasedatabase.app/.json";
-
-    async function search(){
-        const response = await fetch(url);
-
-        const json = await response.json();
-        console.log(json);
-    }
-
-    search();
-    
     return(
         <div>
             <h2>Produkter</h2>
-
-            <ItemCard/>
-            <ItemCard/>
-            <ItemCard/>
-            <ItemCard/>
-            <ItemCard/>
+            {itemsArray.map(
+                ({name, price, stock}) => <ItemCard key={name} name={name} price={price} stock={stock}/>
+            )}
             <ItemCard/>
 
         </div>
