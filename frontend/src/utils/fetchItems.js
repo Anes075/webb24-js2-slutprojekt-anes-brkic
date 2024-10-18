@@ -1,42 +1,31 @@
-export async function fetchItems(){
+export async function fetchItems() {
 
-const url = "https://database-22220-default-rtdb.europe-west1.firebasedatabase.app/.json";
+  // Funktionen hämtar data från fireBase databasen
 
-    const response = await fetch(url);
+  const url = "https://database-22220-default-rtdb.europe-west1.firebasedatabase.app/.json";
 
-    const items = await response.json();
+  const response = await fetch(url);
 
-  //  console.log(items);
-    const itemsArray = [];
+  //Responsen returneras i JSON Format
 
-    for (const property in items){
-        itemsArray.push(`${items[property].name}`);
-        itemsArray.push(items[property].price);
-        itemsArray.push(items[property].stock);
-    }
-    //loopa igenom objektet item med tex for in loop
-    // i varje loop, pusha objektet till itemsArray
+  const items = await response.json();
 
-    console.log(itemsArray);
-    return itemsArray;
+  //console.log(items);
 
+  const itemsArray = [];
+
+  //ItemsArray pushar varje objekt in i en index för varje objekt
+  //som finns i databasen
+
+  for (const property in items) {
+
+    //console.log(property, items[property]);
+    itemsArray.push(items[property]);
+  }
+
+  // console.log(itemsArray);
+
+  //ItemsArray returneras
+
+  return itemsArray;
 }
-
-// const obj = {
-//     0: 1,
-//     1: 2
-// }
-
-// obj[0]
-
-// const obj2 = {
-//     ett: 1,
-//     two: 2
-// }
-
-// obj2.ett
-// obj2["ett"]
-
-// const key = "two";
-// obj2[key]
-// obj2.two

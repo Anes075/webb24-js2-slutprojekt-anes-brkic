@@ -1,13 +1,17 @@
-//Kanske behöver dubbellkolla
+export function ItemCard({name, price, stock, image}){
 
-export function ItemCard(name, price, stock){
+    function handleClick(event){
+        console.log('click');
+        console.log(event.target);
+    }
+
     return(
         <div className="item-card">
-            {/*<img src={image}></img>*/}
+            <img className="item-image" src={image}></img>
             <h3>{name}</h3>
-            <h3>{price}</h3>
-            <p>{stock}</p>
-            <button>KÖP</button>
+            <h3>{price} kr</h3>
+            <p>Lager: {stock}</p>
+            <button onClick={handleClick}>KÖP</button>
         </div>
     )
 }

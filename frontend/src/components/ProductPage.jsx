@@ -1,17 +1,14 @@
-//inte färdig!
-
 import { ItemCard } from "./ItemCard"
 
-export function ProductPage(itemsArray){
+export function ProductPage({shopItems}){
 
     return(
         <div>
             <h2>Produkter</h2>
-            {itemsArray.map(
-                ({name, price, stock}) => <ItemCard key={name} name={name} price={price} stock={stock}/>
+            {shopItems.map(
+                ({name, price, stock, image}) => 
+                <ItemCard key={name} name={name} price={price} stock={stock} image={image}/>
             )}
-            <ItemCard/>
-
         </div>
     )
 }
