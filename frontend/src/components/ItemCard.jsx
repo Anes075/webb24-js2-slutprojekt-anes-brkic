@@ -1,8 +1,18 @@
-export function ItemCard({name, price, stock, image}){
+export function ItemCard({updateCartArray, shopItems, index, name, price, stock, image}){
 
-    function handleClick(event){
-        console.log('click');
-        console.log(event.target);
+   // let itemToCart = [];
+    let tempItem;
+
+    function handleClick(){
+
+        tempItem = {
+            name: shopItems[index].name,
+            price: shopItems[index].price
+        }
+
+        //console.log(tempItem);
+        
+        updateCartArray(tempItem);
     }
 
     return(

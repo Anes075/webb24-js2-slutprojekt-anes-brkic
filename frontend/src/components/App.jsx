@@ -8,7 +8,8 @@ import { useEffect, useState } from "react";
 export function App(){
 
     const [shopItems, setShopitems] = useState([]);
-    const [ pageStatus, setPageStatus] = useState('')
+    const [pageStatus, setPageStatus] = useState('');
+    const [cartArray, setCartArray ] = useState([]);
 
     useEffect(()=>{
         fetchItems()
@@ -16,7 +17,16 @@ export function App(){
             setShopitems(itemsListArray);
             setPageStatus('product');
         })
-    }, [])
+    }, []);
+
+    function updateCartArray(newArray){
+        setCartArray( current =>{
+            currentArray = [...current];
+            currentArray.push(newArray);
+            return currentArray;
+        })
+        // console.log(cartArray);
+    }
 
   // console.log(shopItems);
 
@@ -26,7 +36,7 @@ export function App(){
             <h1>Web store</h1>
             <NavBar pageStatus={pageStatus} setPageStatus={setPageStatus}/>
 
-            {pageStatus == 'product' && <ProductPage shopItems={shopItems}/>}
+            {pageStatus == 'product' && <ProductPage updateCartArray={updateCartArray} shopItems={shopItems}/>}
             {pageStatus == 'cart' && <CartPage/>}
             {pageStatus == 'purchase' && <CompletedPurchase/>}
 
