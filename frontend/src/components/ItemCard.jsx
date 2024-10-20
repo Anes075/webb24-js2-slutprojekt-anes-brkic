@@ -1,6 +1,5 @@
-export function ItemCard({updateCartArray, shopItems, index, name, price, stock, image}){
+export function ItemCard({updateTotalSum, updateCartArray, shopItems, index, name, price, stock, image}){
 
-   // let itemToCart = [];
     let tempItem;
 
     function handleClick(){
@@ -13,6 +12,7 @@ export function ItemCard({updateCartArray, shopItems, index, name, price, stock,
         //console.log(tempItem);
         
         updateCartArray(tempItem);
+        updateTotalSum(tempItem.price);
     }
 
     return(

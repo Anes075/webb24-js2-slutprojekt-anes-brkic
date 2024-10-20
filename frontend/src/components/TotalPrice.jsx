@@ -1,5 +1,5 @@
-export function TotalPrice(){
+export function TotalPrice({totalSum}){
     return(
-        <p>Total Pris: 249 kr</p>
+        <p>Total Price: {totalSum} kr</p>
     )
 }
