@@ -11,6 +11,7 @@ export function App(){
     const [pageStatus, setPageStatus] = useState('');
     const [cartArray, setCartArray ] = useState([]);
     const [totalSumArray, setTotalSumArray] = useState([]);
+    const [cartCount, setCartCount] = useState(0);
 
     useEffect(()=>{
         fetchItems()
@@ -45,10 +46,10 @@ export function App(){
         <main>
 
             <h1>Web store</h1>
-            <NavBar pageStatus={pageStatus} setPageStatus={setPageStatus}/>
+            <NavBar pageStatus={pageStatus} setPageStatus={setPageStatus} cartCount={cartCount}/>
 
-            {pageStatus == 'product' && <ProductPage updateTotalSum={updateTotalSum} updateCartArray={updateCartArray} shopItems={shopItems}/>}
-            {pageStatus == 'cart' && <CartPage totalSumArray={totalSumArray} cartArray={cartArray}/>}
+            {pageStatus == 'product' && <ProductPage cartCount={cartCount} setCartCount={setCartCount} updateTotalSum={updateTotalSum} updateCartArray={updateCartArray} shopItems={shopItems}/>}
+            {pageStatus == 'cart' && <CartPage setCartCount={setCartCount} totalSumArray={totalSumArray} cartArray={cartArray} setCartArray={setCartArray} setPageStatus={setPageStatus} setTotalSumArray={setTotalSumArray}/>}
             {pageStatus == 'purchase' && <CompletedPurchase/>}
 
 
