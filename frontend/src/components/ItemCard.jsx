@@ -1,53 +1,31 @@
-import { useEffect } from "react";
-import { useState } from "react";
+export function ItemCard({cartCount, setCartCount, updateTotalSum, updateCartArray, shopItems, index, name, price, stock, image }) {
 
-export function ItemCard({resetStock, setResetStock, cartCount, setCartCount, updateTotalSum, updateCartArray, shopItems, index, name, price, stock, image}){
+    //Varje kort visar sina namn, priser, antal och en köpknapp
+    //Index används för att skilja mellan korten
 
-    let tempItem;
-    let tempCount = 0;
-    let tempStock = shopItems;
-    const [currentStock, setCurrentStock] = useState(shopItems);
 
-    if(resetStock == true){
-        useEffect(() => {
-        
-        setResetStock(false);
-        }, []);
-    }
+    function handleClick() {
 
-    function handleClick(){
+        if (stock > 0) {                                           //När användaren klickar på en vara vars lager är mer än 0
 
-        if(tempStock[index].stock != 0){
-            
-            tempStock[index].stock = tempStock[index].stock - 1;
-            console.log(tempStock[index].stock , shopItems[index].stock);
+            shopItems[index].stock = shopItems[index].stock - 1;   //Minskas den nuvarande lagret med 1
 
-            tempItem = {
-                name: shopItems[index].name,
-                price: shopItems[index].price
-            }
-    
-            tempCount = cartCount + 1;
-    
-            //console.log(tempItem);
-    
-            updateCartArray(tempItem);
-            updateTotalSum(tempItem.price);
-            setCartCount(tempCount);
+            updateCartArray({name,price});                         //Namnet och priset på varan
+            updateTotalSum(price);                                 //Priset på varan läggs till i en array
+            setCartCount(cartCount + 1);                           //Kundvagnens innehåll ökar med 1
 
-           // console.log(tempStock[index].stock);
         }
-        if(tempStock[index].stock == 0){
+        else{
             console.log('no more left');
         }
     }
 
-    return(
+    return (
         <div className="item-card">
             <img className="item-image" src={image}></img>
             <h3>{name}</h3>
             <h3>{price} kr</h3>
-            <p>Lager: {tempStock[index].stock}</p>
+            <p>Lager: {stock}</p>
             <button className="buy" onClick={handleClick}>KÖP</button>
         </div>
     )

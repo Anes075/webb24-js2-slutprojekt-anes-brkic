@@ -1,18 +1,17 @@
-//inte färdig!
-export function NavBar({ pageStatus, setPageStatus, cartCount}) {
+export function NavBar({ pageStatus, setPageStatus, cartCount }) {
 
     //Navigeringsfält med 2 knapper, när man klickar på en
     //av dem ska den leda användaren til vald sida
 
     function handleProductClick() {
-        if (pageStatus == 'cart' || pageStatus == 'purchase') {
-            setPageStatus('product');
+        if (pageStatus == 'cart' || pageStatus == 'purchase') { 
+            setPageStatus('product');                               //Sätter sidans status till 'product'
         }
     }
 
     function handleCartClick() {
         if (pageStatus == 'product' || pageStatus == 'purchase') {
-            setPageStatus('cart');
+            setPageStatus('cart');                                  //Sätter sidans status till 'Cart'
         }
     }
 
