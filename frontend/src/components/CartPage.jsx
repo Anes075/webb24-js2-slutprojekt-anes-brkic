@@ -4,7 +4,7 @@ import { Purchase } from './Purchase';
 import { CartReset } from "./CartReset";
 import { useState } from "react";
 
-export function CartPage({setCartCount, cartArray, totalSumArray, setCartArray, setPageStatus, setTotalSumArray}){
+export function CartPage({setCartCount, cartArray, totalSumArray, setCartArray, setPageStatus, setTotalSumArray, setResetStock, shopItems, updateStock={updateStock}}){
 
     const [resetTotal, setResetTotal] = useState(0);
     let totalSum = resetTotal;
@@ -24,8 +24,8 @@ export function CartPage({setCartCount, cartArray, totalSumArray, setCartArray, 
         <TotalPrice totalSum={totalSum}/>
 
         <div>
-        <Purchase  setCartCount={setCartCount} setTotalSumArray={setTotalSumArray} setCartArray={setCartArray} setPageStatus={setPageStatus}/>
-        <CartReset setCartCount={setCartCount} setTotalSumArray={setTotalSumArray} setCartArray={setCartArray} setPageStatus={setPageStatus}/>
+        <Purchase  setCartCount={setCartCount} setTotalSumArray={setTotalSumArray} setCartArray={setCartArray} setPageStatus={setPageStatus} totalSum={totalSum} shopItems={shopItems} updateStock={updateStock}/>
+        <CartReset setCartCount={setCartCount} setTotalSumArray={setTotalSumArray} setCartArray={setCartArray} setPageStatus={setPageStatus} totalSum={totalSum} setResetStock={setResetStock}/>
         </div>
 
         </div>

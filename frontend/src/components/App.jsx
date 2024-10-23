@@ -12,6 +12,13 @@ export function App(){
     const [cartArray, setCartArray ] = useState([]);
     const [totalSumArray, setTotalSumArray] = useState([]);
     const [cartCount, setCartCount] = useState(0);
+    const [resetStock, setResetStock] = useState(false);
+
+    const url = "https://database-22220-default-rtdb.europe-west1.firebasedatabase.app/.json";
+
+    const header = {
+        "Content-type": "application/json; charset=UTF-8"
+    }
 
     useEffect(()=>{
         fetchItems()
@@ -39,8 +46,17 @@ export function App(){
         //console.log(totalSumArray);
     }
 
+    async function updateStock(newStock){
+        const options ={
+            method: "PUT",
+            body: JSON.stringify(newStock),
+            headers: header
+        }
+        const response = await fetch(url, options);
+        const data = await response.json();
 
-  // console.log(shopItems);
+        //console.log(data);
+    }
 
     return(
         <main>
@@ -48,8 +64,8 @@ export function App(){
             <h1>Web store</h1>
             <NavBar pageStatus={pageStatus} setPageStatus={setPageStatus} cartCount={cartCount}/>
 
-            {pageStatus == 'product' && <ProductPage cartCount={cartCount} setCartCount={setCartCount} updateTotalSum={updateTotalSum} updateCartArray={updateCartArray} shopItems={shopItems}/>}
-            {pageStatus == 'cart' && <CartPage setCartCount={setCartCount} totalSumArray={totalSumArray} cartArray={cartArray} setCartArray={setCartArray} setPageStatus={setPageStatus} setTotalSumArray={setTotalSumArray}/>}
+            {pageStatus == 'product' && <ProductPage cartCount={cartCount} setCartCount={setCartCount} updateTotalSum={updateTotalSum} updateCartArray={updateCartArray} shopItems={shopItems} resetStock={resetStock} setResetStock={setResetStock}/>}
+            {pageStatus == 'cart' && <CartPage setCartCount={setCartCount} totalSumArray={totalSumArray} cartArray={cartArray} setCartArray={setCartArray} setPageStatus={setPageStatus} setTotalSumArray={setTotalSumArray} setResetStock={setResetStock} shopItems={shopItems} updateStock={updateStock}/>}
             {pageStatus == 'purchase' && <CompletedPurchase/>}
 
 
