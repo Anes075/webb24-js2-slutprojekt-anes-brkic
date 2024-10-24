@@ -57,7 +57,7 @@ export function App() {
     return (
         <main>
 
-            <h1>Web store</h1>
+            <h1 className="page-title">Web store</h1>
             <NavBar pageStatus={pageStatus} setPageStatus={setPageStatus} cartCount={cartCount} />
 
             {pageStatus == 'product' && <ProductPage cartCount={cartCount} setCartCount={setCartCount} updateTotalSum={updateTotalSum} updateCartArray={updateCartArray} shopItems={shopItems}/>}

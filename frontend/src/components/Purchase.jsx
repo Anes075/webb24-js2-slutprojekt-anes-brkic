@@ -18,6 +18,6 @@ export function Purchase({ setCartCount, setCartArray, setPageStatus, setTotalSu
         }
     }
     return (
-        <button onClick={handleClick}>BETALA</button>
+        <button className="cart-purchase" onClick={handleClick}>BETALA</button>
     )
 }

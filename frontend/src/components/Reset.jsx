@@ -13,7 +13,7 @@ export function Reset({totalSum}) {
         }
     }
     return (
-        <button onClick={handleClick}>TÖM</button>
+        <button className="cart-reset" onClick={handleClick}>TÖM</button>
     )
 }
 

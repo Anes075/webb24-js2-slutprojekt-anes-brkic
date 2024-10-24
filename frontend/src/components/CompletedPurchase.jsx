@@ -6,6 +6,6 @@ export function CompletedPurchase() {
       //till produktsidan
 
     return (
-        <h2>Thank you for your purchase!</h2>
+        <h2 className="completed-purchase">Tack för ditt köp!</h2>
     )
 }

@@ -3,7 +3,7 @@ import { TotalPrice } from "./TotalPrice";
 import { Purchase } from './Purchase';
 import { Reset } from "./Reset";
 
-export function CartPage({ setCartCount, cartArray, totalSumArray, setCartArray, setPageStatus, setTotalSumArray, shopItems, updateStock = { updateStock } }) {
+export function CartPage({ setCartCount, cartArray, totalSumArray, setCartArray, setPageStatus, setTotalSumArray, shopItems, updateStock}) {
 
     let totalSum = 0;                                           //totalSum återställs till 0 varje gång product page renderas  
 
@@ -11,12 +11,14 @@ export function CartPage({ setCartCount, cartArray, totalSumArray, setCartArray,
         totalSum += totalSumArray[i];                           //totalSum adderar ihop alla priser till en total summa
     }
 
+    console.log(cartArray);
+
     return (
-        <div>
-            <h2>Cart Page</h2>
+        <div className="cart-page">
+            <h2 className="cart-h2">Kundvagn</h2>
             {cartArray.map(
-                ({ name, price }) =>
-                    <ShopCartList name={name} price={price} />
+                ({ name, price, itemId }) =>
+                    <ShopCartList name={name} price={price} key={itemId}/>
             )}
             <TotalPrice totalSum={totalSum} />
 
