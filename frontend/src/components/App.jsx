@@ -29,6 +29,7 @@ export function App() {
 
     function updateCartArray(newArray) {                    //Funktion som lägger till en vara i kundvagnen
         setCartArray(current => {
+            let currentArray;
             currentArray = [...current];
             currentArray.push(newArray);
             return currentArray;
@@ -38,6 +39,7 @@ export function App() {
 
     function updateTotalSum(newPrice) {                     //Funktion som lägger alla varors priser i en array
         setTotalSumArray(current => {                       //Dessa priser adderas ihop till en totalsumma i Product page
+            let currentPrice;
             currentPrice = [...current];
             currentPrice.push(newPrice);
             return currentPrice;
